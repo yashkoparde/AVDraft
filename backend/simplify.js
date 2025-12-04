@@ -2,7 +2,7 @@ const OpenAI = require('openai');
 require('dotenv').config();
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY || 'dummy-key', // Fallback to dummy to avoid init errors if key missing, checks in logic
+  apiKey: process.env.OPENAI_API_KEY || 'AIzaSyDMNwF0Ndgck_o5wOpe3TrkSGa4AUJHVws', // Fallback to dummy to avoid init errors if key missing, checks in logic
 });
 
 const LOCAL_DICTIONARY = {
