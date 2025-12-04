@@ -1,4 +1,4 @@
-# ArogyaVani / MediBridge 🏥
+# ArogyaVani
 
 ArogyaVani (Voice of Health) is an AI-powered medical text simplification tool designed to bridge the gap between complex medical jargon and patient understanding. It transforms diagnosis reports and consent forms into plain, 5th-grade level language using a hybrid approach (Local Rule-Based + LLM).
 
@@ -24,7 +24,7 @@ arogyavani-replit-demo/
 │  ├─ index.html       # Main UI
 │  ├─ styles.css       # Styles (Plus Jakarta Sans, Animations)
 │  ├─ script.js        # Frontend logic (OCR, API, TTS)
-├─ .replit             # Replit configuration
+├─ .start.sh           # Replit configuration
 └─ deploy.md           # Deployment instructions
 ```
 
