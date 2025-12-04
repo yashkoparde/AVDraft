@@ -14,7 +14,7 @@ ArogyaVani (Voice of Health) is an AI-powered medical text simplification tool d
 ## Project Structure
 
 ```
-arogyavani-replit-demo/
+arogyavani-demo/
 ├─ backend/
 │  ├─ server.js        # Express server & API routes
 │  ├─ simplify.js      # Simplification logic (Local + OpenAI)
