@@ -1,0 +1,8 @@
+{
+  "name": "arogyavani-root",
+  "version": "1.0.0",
+  "description": "Root package.json to run backend",
+  "scripts": {
+    "start": "cd backend && npm install && node server.js"
+  }
+}
