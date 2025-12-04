@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArogyaVani / MediBridge - Medical Simplification</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Libraries -->
+  <script src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <div class="container">
+    <nav>
+      <div class="logo">
+        <i class="fa-solid fa-heart-pulse" style="color: var(--primary-color);"></i>
+        Arogya<span>Vani</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#demo">Live Demo</a></li>
+        <li><a href="#stats">Impact</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <button class="btn btn-primary" id="toggle-history">History</button>
+    </nav>
+  </div>
+
+  <!-- Hero -->
+  <header class="container hero" id="demo">
+    <div class="hero-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+    </div>
+    
+    <div class="hero-content reveal">
+      <div class="badge">AI-Powered Health Literacy</div>
+      <h1>Medical Jargon,<br><span class="gradient-text">Simplified.</span></h1>
+      <p>Transform complex medical documents into plain, easy-to-understand language instantly. Empowering patients with clarity.</p>
+      
+      <div class="hero-btns">
+        <button class="btn btn-primary" id="simplify-btn">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Simplify & Read
+        </button>
+        <button class="btn btn-outline" id="sample-btn">
+            Try Sample
+        </button>
+      </div>
+    </div>
+    
+    <div class="mock-card reveal">
+      <div class="upload-area" id="drop-zone">
+        <input type="file" id="file-input" hidden accept="image/*,.pdf">
+        <div class="file-label">
+            <i class="fa-solid fa-cloud-arrow-up" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+            <span>Drag & drop or click to upload</span>
+            <span style="font-size: 0.75rem; opacity: 0.7;">Supports Images & PDF (OCR)</span>
+        </div>
+        <div class="spinner" id="ocr-spinner"></div>
+      </div>
+      
+      <textarea id="text-input" placeholder="Paste medical text here..." style="width: 100%; height: 150px; margin-top: 1rem; padding: 1rem; border: 1px solid #e2e8f0; border-radius: var(--radius-md); font-family: inherit; resize: vertical;"></textarea>
+      
+      <div id="result-area" class="output-area" style="display: none;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; align-items: center;">
+            <h4 style="color: var(--primary-color);">Simplified Text</h4>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <span id="confidence-badge" class="confidence-tag conf-medium">Medium</span>
+                <button id="tts-btn" class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">
+                    <i class="fa-solid fa-play"></i>
+                </button>
+                <button id="pdf-btn" class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">
+                    <i class="fa-solid fa-file-pdf"></i>
+                </button>
+            </div>
+        </div>
+        <div id="simplified-text" style="white-space: pre-wrap;"></div>
+        
+        <div style="margin-top: 1rem; border-top: 1px solid #ccfbf1; padding-top: 1rem;">
+            <button id="quiz-btn" class="btn btn-primary" style="font-size: 0.875rem; width: 100%;">Check Understanding</button>
+            <div id="quiz-area" style="margin-top: 1rem; display: none;"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Stats -->
+  <section class="container" id="stats">
+    <div class="stats-row reveal">
+      <div class="stat-item">
+        <h3>22+</h3>
+        <p>Languages</p>
+      </div>
+      <div class="stat-item">
+        <h3>98%</h3>
+        <p>User Clarity</p>
+      </div>
+      <div class="stat-item">
+        <h3>24/7</h3>
+        <p>Availability</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="container" id="features">
+    <h2 class="section-title reveal">Why ArogyaVani?</h2>
+    <p class="section-desc reveal">Bridging the gap between doctors and patients with advanced AI.</p>
+    
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon"><i class="fa-solid fa-language"></i></div>
+        <h3>Plain Language</h3>
+        <p>Converts jargon into 5th-grade level text.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon"><i class="fa-solid fa-eye"></i></div>
+        <h3>OCR Support</h3>
+        <p>Extract text from photos and reports instantly.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon"><i class="fa-solid fa-ear-listen"></i></div>
+        <h3>Text-to-Speech</h3>
+        <p>Listen to your results for better accessibility.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zig Zag -->
+  <section class="container zig-zag">
+    <div class="detail-row reveal">
+      <div class="detail-content">
+        <div class="badge">Trusted</div>
+        <h2>Understand Your Diagnosis</h2>
+        <p>Don't let complex terms scare you. We break down diagnosis reports into simple, actionable points so you know exactly what's going on.</p>
+      </div>
+      <!-- Placeholder image -->
+      <div class="detail-img" style="background: url('https://placehold.co/600x400/e0f2f1/0d9488?text=Diagnosis+Simplification') center/cover;"></div>
+    </div>
+    
+    <div class="detail-row reverse reveal">
+      <div class="detail-content">
+        <div class="badge">Secure</div>
+        <h2>Privacy First</h2>
+        <p>Your health data stays private. We process text securely and never share your personal information with third parties.</p>
+      </div>
+      <div class="detail-img" style="background: url('https://placehold.co/600x400/fef3c7/f59e0b?text=Privacy+Shield') center/cover;"></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="container faq-section" id="faq">
+    <h2 class="section-title reveal">Frequently Asked Questions</h2>
+    
+    <div class="accordion-item reveal">
+      <button class="accordion-header">
+        Is this a replacement for a doctor?
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="accordion-content">
+        <p>No, ArogyaVani is a tool to help you understand medical text. Always consult your doctor for medical advice.</p>
+      </div>
+    </div>
+    
+    <div class="accordion-item reveal">
+      <button class="accordion-header">
+        Is my data saved?
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="accordion-content">
+        <p>We process data to simplify it. We keep a secure audit log for quality purposes, but we prioritize your privacy.</p>
+      </div>
+    </div>
+    
+    <div class="accordion-item reveal">
+      <button class="accordion-header">
+        Does it work with handwriting?
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="accordion-content">
+        <p>Our OCR works best with printed text. Handwriting recognition depends on legibility.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="container">
+    <div class="cta-section reveal">
+      <h2>Ready to simplify healthcare?</h2>
+      <p style="margin-bottom: 2rem;">Join thousands of patients taking control of their health literacy.</p>
+      <button class="btn" style="background: white; color: var(--secondary-color);" onclick="document.getElementById('demo').scrollIntoView({behavior: 'smooth'})">Get Started Now</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <div class="logo">
+            <i class="fa-solid fa-heart-pulse" style="color: var(--primary-color);"></i>
+            Arogya<span>Vani</span>
+          </div>
+          <p style="margin-top: 1rem; font-size: 0.9rem;">Empowering patients through AI.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">API</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2024 ArogyaVani / MediBridge. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- History Panel -->
+  <div class="history-panel" id="history-panel">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <h4>Recent Sessions</h4>
+          <button id="close-history" style="background:none; border:none; cursor:pointer;"><i class="fa-solid fa-times"></i></button>
+      </div>
+      <div id="history-list"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
